@@ -63,11 +63,13 @@ class Castle(Environment):
             return True
         elif action == "jump":
             yoshi = self.percept(agent)[0]
+            print(yoshi)
             agent.jump(yoshi)
             self.delete_thing(yoshi)
             return True
         elif action == "rescue":
             princess = self.percept(agent)[0]
+            print(princess)
             agent.rescue(princess)
             self.delete_thing(princess)
             return True
@@ -78,7 +80,7 @@ class Castle(Environment):
         
         
     def is_done(self):
-        """ Infinite loop """
+        """ It is done when there are no princesses in the castle """
         if not princess in self.things:
             return True
         return False
@@ -94,6 +96,7 @@ def program(percepts):
         elif isinstance(t, Princess):
             return 'rescue'
     return "move right"
+
 
 
 
